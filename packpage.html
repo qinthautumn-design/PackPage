@@ -8,22 +8,22 @@
 <meta name="keywords" content="done for you website, web design agency, turnkey website, custom web development, ecommerce web design, digital goods, startup web design">
 <meta name="author" content="PackPage">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://packpage.com/">
+<link rel="canonical" href="https://getpackpage.my.id/">
 
 <!-- Open Graph / Social Media Preview -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://packpage.com/">
+<meta property="og:url" content="https://getpackpage.my.id/">
 <meta property="og:site_name" content="PackPage">
 <meta property="og:title" content="PackPage — Done-for-You Websites & Digital Goods Agency">
 <meta property="og:description" content="Turnkey websites and digital goods crafted for conversions and growth. From concept to launch, we handle everything.">
-<meta property="og:image" content="https://packpage.com/og-image.jpg">
+<meta property="og:image" content="https://getpackpage.my.id/og-image.jpg">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://packpage.com/">
+<meta name="twitter:url" content="https://getpackpage.my.id/">
 <meta name="twitter:title" content="PackPage — Done-for-You Websites & Digital Goods Agency">
 <meta name="twitter:description" content="Turnkey websites and digital goods crafted for conversions and growth. From concept to launch, we handle everything.">
-<meta name="twitter:image" content="https://packpage.com/og-image.jpg">
+<meta name="twitter:image" content="https://getpackpage.my.id/og-image.jpg">
 
 <!-- Structured Data (Schema.org JSON-LD for Google Rich Results) -->
 <script type="application/ld+json">
@@ -32,19 +32,19 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://packpage.com/#website",
-      "url": "https://packpage.com/",
+      "@id": "https://getpackpage.my.id/#website",
+      "url": "https://getpackpage.my.id/",
       "name": "PackPage",
       "description": "Done-for-You Websites & Digital Goods Agency",
       "publisher": {
-        "@id": "https://packpage.com/#organization"
+        "@id": "https://getpackpage.my.id/#organization"
       }
     },
     {
       "@type": "ProfessionalService",
-      "@id": "https://packpage.com/#organization",
+      "@id": "https://getpackpage.my.id/#organization",
       "name": "PackPage",
-      "url": "https://packpage.com/",
+      "url": "https://getpackpage.my.id/",
       "description": "Full-service done-for-you website design, turnkey web development, and digital goods for startups, e-commerce, and modern businesses.",
       "priceRange": "$$",
       "serviceType": [
@@ -88,6 +88,54 @@
     }
   ]
 }
+
+  // Asynchronous Contact Form Submission to qinthara@getpackpage.my.id via FormSubmit AJAX
+  async function handleContactSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form');
+    const btn = document.getElementById('contact-submit-btn');
+    const statusBox = document.getElementById('contact-form-status');
+    const originalBtnText = btn.innerHTML;
+
+    btn.disabled = true;
+    btn.innerHTML = '<span>Sending inquiry...</span>';
+    statusBox.style.display = 'none';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/qinthara@getpackpage.my.id', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        statusBox.style.display = 'block';
+        statusBox.style.background = 'rgba(168, 184, 154, 0.15)';
+        statusBox.style.border = '1px solid var(--sage)';
+        statusBox.style.color = 'var(--sage-light)';
+        statusBox.innerHTML = '✓ <strong>Thank you!</strong> Your message has been sent successfully. We will get back to you within 24 hours.';
+        form.reset();
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      statusBox.style.display = 'block';
+      statusBox.style.background = 'rgba(239, 68, 68, 0.15)';
+      statusBox.style.border = '1px solid #ef4444';
+      statusBox.style.color = '#fca5a5';
+      statusBox.innerHTML = '✕ <strong>Oops!</strong> There was an issue sending your message. Please try again or email us directly at <a href="mailto:qinthara@getpackpage.my.id" style="color:#fff;text-decoration:underline;">qinthara@getpackpage.my.id</a>';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = originalBtnText;
+    }
+  }
+
 </script>
 <style>
   :root {
@@ -928,20 +976,34 @@
     </div>
 
     <div class="card" style="max-width:520px; margin:0 auto;" class="reveal">
-      <form onsubmit="event.preventDefault(); alert('Thank you! We will contact you soon.');">
+      <form id="contact-form" onsubmit="handleContactSubmit(event)">
+        <!-- FormSubmit configuration fields -->
+        <input type="text" name="_honey" style="display:none">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="⚡ New Project Inquiry — PackPage">
+        <input type="hidden" name="_template" value="table">
+
         <div style="margin-bottom:1.2rem;">
           <label style="display:block; font-size:0.85rem; color:var(--muted); margin-bottom:0.4rem;">Name</label>
-          <input type="text" required placeholder="Your name" style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--card-border); background:rgba(0,0,0,0.3); color:var(--cream); font-size:0.95rem;">
+          <input type="text" name="name" required placeholder="Your name or company" style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--card-border); background:rgba(0,0,0,0.3); color:var(--cream); font-size:0.95rem;">
         </div>
         <div style="margin-bottom:1.2rem;">
           <label style="display:block; font-size:0.85rem; color:var(--muted); margin-bottom:0.4rem;">Email</label>
-          <input type="email" required placeholder="you@email.com" style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--card-border); background:rgba(0,0,0,0.3); color:var(--cream); font-size:0.95rem;">
+          <input type="email" name="email" required placeholder="you@company.com" style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--card-border); background:rgba(0,0,0,0.3); color:var(--cream); font-size:0.95rem;">
         </div>
         <div style="margin-bottom:1.5rem;">
           <label style="display:block; font-size:0.85rem; color:var(--muted); margin-bottom:0.4rem;">Project Details</label>
-          <textarea rows="4" placeholder="Tell us what you need..." style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--card-border); background:rgba(0,0,0,0.3); color:var(--cream); font-size:0.95rem; resize:vertical;"></textarea>
+          <textarea name="project_details" rows="4" required placeholder="Tell us about your goals, timeline, or preferred package..." style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--card-border); background:rgba(0,0,0,0.3); color:var(--cream); font-size:0.95rem; resize:vertical;"></textarea>
         </div>
-        <button type="submit" class="btn-primary" style="width:100%;">Send Message</button>
+        <button type="submit" id="contact-submit-btn" class="btn-primary" style="width:100%; cursor:pointer; font-weight:600; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
+          <span>Send Message</span>
+        </button>
+
+        <div id="contact-form-status" style="display:none; margin-top:1.2rem; padding:1rem 1.2rem; border-radius:10px; font-size:0.9rem; line-height:1.5; text-align:center;"></div>
+
+        <p style="text-align:center; font-size:0.82rem; color:var(--muted); margin-top:1.2rem;">
+          Prefer direct email? Reach us at <a href="mailto:qinthara@getpackpage.my.id" style="color:var(--sage-light); text-decoration:underline;">qinthara@getpackpage.my.id</a>
+        </p>
       </form>
     </div>
   </div>
